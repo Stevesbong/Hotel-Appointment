@@ -1,14 +1,16 @@
 import React from 'react';
-import { Nav, Navbar, Button, Container } from 'react-bootstrap';
+import { Navbar, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks'
 
 const NavbarContainer = () => {
     return (
-        <Navbar sticky="top" bg="dark" variant="dark">
+        <Navbar className="py-0" sticky="top" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand as={Link} to="/">Hotel Planer</Navbar.Brand>
                 <SignedInLinks />
+                <SignedOutLinks />
             </Container>
         </Navbar>
     )
