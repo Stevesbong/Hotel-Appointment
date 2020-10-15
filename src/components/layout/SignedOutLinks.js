@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, ListGroup, Badge } from 'react-bootstrap';
+import { Nav, ListGroup } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 const SignedOutLinks = () => {

@@ -12,6 +12,6 @@ body {
   padding: .9em .6em
 }
 
-.active {
-  color: red;
+.card-footer {
+  background-color: #fff;
 }
