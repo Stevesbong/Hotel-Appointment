@@ -5,7 +5,7 @@ const ProjectDetails = ({ match }) => {
     // route parameter of ID
     const id = match.params.id;
     return (
-        <Container className="project-details my-5">
+        <Container className="project-details">
             <Card className=" border-0">
                 <Card.Body>
                     <Card.Title as="h1" className="text-dark">Project title {id}</Card.Title>

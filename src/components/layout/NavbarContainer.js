@@ -2,11 +2,11 @@ import React from 'react';
 import { Navbar, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
-import SignedOutLinks from './SignedOutLinks'
+import SignedOutLinks from './SignedOutLinks';
 
 const NavbarContainer = () => {
     return (
-        <Navbar className="py-0" sticky="top" bg="dark" variant="dark">
+        <Navbar className="py-0 mb-3 mb-md-5" sticky="top" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand as={Link} to="/">Hotel Planer</Navbar.Brand>
 
