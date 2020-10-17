@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 
 const ProjectSummary = () => {
     return (
-        <Card className="project-summary border-0">
+        <Card className="project-summary border-0 my-1">
             <Card.Body className="text-secondary">
                 <Card.Title as="h4" className="text-dark font-weight-bold">Project Title</Card.Title>
                 <p>Posted by the Steve</p>

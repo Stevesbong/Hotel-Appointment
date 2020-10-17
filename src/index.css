@@ -1,3 +1,7 @@
+html {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +10,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url('./assets/bg-home.jpg') no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color: darkorange;
+  min-height: 100%;
 }
 
 .badge {
@@ -14,4 +23,12 @@ body {
 
 .card-footer {
   background-color: #fff;
+}
+
+.project-summary {
+  opacity: .8;
+}
+
+form button, form h3 {
+  margin: 20px 0;
 }

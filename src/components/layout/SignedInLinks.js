@@ -6,7 +6,7 @@ const SignedInLinks = () => {
     return (
         <ListGroup horizontal as="ul">
             <ListGroup.Item as="li" className="my-auto px-2 py-1 bg-dark border-0">
-                <Nav.Item className="ml-1 text-light text-decoration-none" as={NavLink} to="/">New Project</Nav.Item>
+                <Nav.Item className="ml-1 text-light text-decoration-none" as={NavLink} to="/create">New Project</Nav.Item>
             </ListGroup.Item>
             <ListGroup.Item as="li" className="my-auto px-2 py-1 bg-dark border-0">
                 <Nav.Item className="ml-1 text-light text-decoration-none" as={NavLink} to="/">Log Out</Nav.Item>

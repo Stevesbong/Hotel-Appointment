@@ -32,7 +32,7 @@ class SignIn extends Component {
                     <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
                         <Form.Control onChange={this.handleChange} type="password" placeholder="Enter password" />
-                        <Form.Text id="passwordHelpBlock" muted>
+                        <Form.Text id="passwordHelpBlock">
                             Your password must be 8-20 characters long, contain letters and numbers, and
                             must not contain spaces, special characters, or emoji.
                         </Form.Text>

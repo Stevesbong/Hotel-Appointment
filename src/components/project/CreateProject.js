@@ -24,14 +24,14 @@ class CreateProject extends Component {
         return (
             <Container>
                 <Form onSubmit={this.handleSubmit}>
-                    <h3 className="text-dark mb-4">Sign In</h3>
+                    <h3 className="text-dark mb-4">Create new project</h3>
                     <Form.Group controlId="title">
                         <Form.Label>Title</Form.Label>
                         <Form.Control onChange={this.handleChange} type="text" placeholder="Enter Title" />
                     </Form.Group>
                     <Form.Group controlId="content">
                         <Form.Label>Project Content</Form.Label>
-                        <Form.Control as="textarea" rows="3" onChange={this.handleChange} placeholder="Enter Content" />
+                        <Form.Control as="textarea" rows="4" onChange={this.handleChange} placeholder="Enter Content" />
                     </Form.Group>
                     {/* <Form.Group controlId="textarea">
                         <Form.Label>Example textarea</Form.Label>

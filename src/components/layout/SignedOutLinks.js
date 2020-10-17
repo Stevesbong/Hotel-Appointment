@@ -6,10 +6,10 @@ const SignedOutLinks = () => {
     return (
         <ListGroup horizontal as="ul">
             <ListGroup.Item as="li" className="my-auto px-2 py-1 bg-dark border-0">
-                <Nav.Item className="ml-1 text-light text-decoration-none" as={NavLink} to="/">Signup</Nav.Item>
+                <Nav.Item className="ml-1 text-light text-decoration-none" as={NavLink} to="/signup">Signup</Nav.Item>
             </ListGroup.Item>
             <ListGroup.Item as="li" className="my-auto px-2 py-1 bg-dark border-0">
-                <Nav.Item className="ml-1 text-light text-decoration-none" as={NavLink} to="/">Login</Nav.Item>
+                <Nav.Item className="ml-1 text-light text-decoration-none" as={NavLink} to="/signin">Login</Nav.Item>
             </ListGroup.Item>
         </ListGroup>
     )
