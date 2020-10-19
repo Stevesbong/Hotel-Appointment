@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 
+// Higher Order Component (HOC) that connecting redux store and react
+// Connect this Dashboard component with the redux store
+import { connect } from 'react-redux';
+
+// Action creator
+import { createProject } from '../../store/actions/projectActions';
+
+
 class CreateProject extends Component {
     state ={
         title: '',
@@ -18,7 +26,8 @@ class CreateProject extends Component {
     // Handling form submit
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        // console.log(this.state)
+        this.props.createProject(this.state)
     }
     render() {
         return (
@@ -44,4 +53,15 @@ class CreateProject extends Component {
     }
 }
 
-export default CreateProject;
+/**
+ * map our dispatch from the store to the props in this component
+ * @param {*} dispatch dispatch of our redux store
+ * @returns { object } properties of this component props
+ */
+const mapDispatchToProps = ( dispatch ) => {
+    return {
+        createProject: ( project ) => dispatch(createProject(project))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateProject);
