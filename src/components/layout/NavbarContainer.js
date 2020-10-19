@@ -3,6 +3,7 @@ import { Navbar, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
+import { connect } from 'react-redux';
 
 const NavbarContainer = () => {
     return (
@@ -18,4 +19,11 @@ const NavbarContainer = () => {
     )
 }
 
-export default NavbarContainer;
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps)(NavbarContainer);

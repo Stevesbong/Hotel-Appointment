@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { signIn } from '../../store/actions/authActions';
 
 class SignIn extends Component {
     state ={
@@ -18,9 +20,10 @@ class SignIn extends Component {
     // Handling form submit
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.signIn(this.state);
     }
     render() {
+        const { authError } = this.props;
         return (
             <Container>
                 <Form onSubmit={this.handleSubmit}>
@@ -38,10 +41,25 @@ class SignIn extends Component {
                         </Form.Text>
                     </Form.Group>
                     <Button variant="primary" type="submit">Login</Button>
+                        { authError ? ( <Container className="text-center text-danger bg-white col-3 py-4 rounded">
+                                            <p className="m-0">{authError}</p>
+                                        </Container> ) : null }
                 </Form>
             </Container>
         )
     }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+    return {
+        authError: state.auth.authError
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signIn: (credential) => dispatch(signIn(credential))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

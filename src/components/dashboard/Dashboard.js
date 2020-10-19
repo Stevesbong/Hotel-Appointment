@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Notifications from './Notifications';
 import ProjectList from '../project/ProjectList';
+import { compose } from 'redux';
+
+// connect component with single database collection
+import { firestoreConnect } from 'react-redux-firebase';
+
 
 // Higher Order Component (HOC) that connecting redux store and react
 // Connect this Dashboard component with the redux store
@@ -35,10 +40,16 @@ class Dashboard extends Component {
  * so we can access them inside this component
  */
 const mapStateToProps = ( state ) => {
+    console.log(state)
     return {
-        projects: state.project.projects
+        projects: state.firestore.ordered.projects
     }
 }
 
 // Connect is function for HOC
-export default connect(mapStateToProps)(Dashboard);
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'projects'}
+    ])
+)(Dashboard);
