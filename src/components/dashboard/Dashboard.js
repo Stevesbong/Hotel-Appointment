@@ -13,7 +13,7 @@ class Dashboard extends Component {
         const { projects } = this.props;
 
         return (
-            <Container className="dashboard my-3">
+            <Container className="dashboard my-3z-index-2 pos-abs">
                 <Row>
                     <Col xs={12} md={6}>
                         <ProjectList projects={projects} />

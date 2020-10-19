@@ -24,15 +24,15 @@ class SignIn extends Component {
         return (
             <Container>
                 <Form onSubmit={this.handleSubmit}>
-                    <h3 className="text-dark mb-4">Sign In</h3>
+                    <h3 className="text-light mb-4">Sign In</h3>
                     <Form.Group controlId="email">
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label className="text-light">Email address</Form.Label>
                         <Form.Control onChange={this.handleChange} type="email" placeholder="Enter email" />
                     </Form.Group>
                     <Form.Group controlId="password">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className="text-light">Password</Form.Label>
                         <Form.Control onChange={this.handleChange} type="password" placeholder="Enter password" />
-                        <Form.Text id="passwordHelpBlock">
+                        <Form.Text className="text-light" id="passwordHelpBlock">
                             Your password must be 8-20 characters long, contain letters and numbers, and
                             must not contain spaces, special characters, or emoji.
                         </Form.Text>
