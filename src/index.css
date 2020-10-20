@@ -18,7 +18,11 @@ body {
 }
 
 .badge {
-  padding: .9em .6em
+  padding: .638em .38em
+}
+
+.logout {
+  cursor: pointer;
 }
 
 .card-footer {
