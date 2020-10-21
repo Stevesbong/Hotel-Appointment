@@ -55,7 +55,7 @@ class SignIn extends Component {
                 </Container>
                 <Container className="col-auto bg-secondary" style={{ position: 'absolute', top: '12%', right: '8%', opacity: '.8'}}>
                     <p className="mb-1 font-weight-bolder text-light">Test email and password</p>
-                    <p className="ml-2 my-0 text-light">Email: test@test.com</p>
+                    <p className="ml-2 my-0 text-light">Email: testing@test.com</p>
                     <p className="ml-2 my-0 text-light">Password: test1234</p>
                 </Container>
             </React.Fragment>
