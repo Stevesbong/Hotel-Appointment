@@ -4,18 +4,17 @@ import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 import { connect } from 'react-redux';
-import { isLoaded } from 'react-redux-firebase';
 
-const NavbarContainer = ({ auth }) => {
+const NavbarContainer = ({ auth, profile }) => {
 
     // shows different component depend on user logged in or not
-    const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
+    const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />
 
     return (
         <Navbar className="py-0 mb-3 mb-md-5" sticky="top" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand as={Link} to="/">Hotel Planer</Navbar.Brand>
-                { isLoaded(auth) && links }
+                <Navbar.Brand as={Link} to="/">Travel Planer</Navbar.Brand>
+                { links }
             </Container>
         </Navbar>
     )
@@ -23,7 +22,8 @@ const NavbarContainer = ({ auth }) => {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 

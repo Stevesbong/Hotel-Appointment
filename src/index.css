@@ -18,11 +18,18 @@ body {
 }
 
 .badge {
-  padding: .638em .38em
+  padding: .638em .58em
 }
 
 .logout {
   cursor: pointer;
+}
+
+.loading {
+  position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	width: 30%; height: auto;
 }
 
 .card-footer {

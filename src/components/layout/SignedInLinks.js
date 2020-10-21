@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut } from '../../store/actions/authActions';
 
-const SignedInLinks = ({ signOut }) => {
+const SignedInLinks = ({ signOut, profile }) => {
     return (
         <ListGroup horizontal as="ul">
             <ListGroup.Item className="my-3 px-2 py-1 bg-dark border-0" as="li">
@@ -14,7 +14,7 @@ const SignedInLinks = ({ signOut }) => {
                 <Nav.Item className="ml-1 text-light text-decoration-none logout" as="a" onClick={signOut}>Log Out</Nav.Item>
             </ListGroup.Item>
             <ListGroup.Item className="my-auto px-2 py-1 bg-dark border-0" as="li">
-                <Nav.Item className="ml-1" as={NavLink} to="/"><h3 className="d-inline-block mb-0"><Badge pill variant="success">NN</Badge></h3></Nav.Item>
+                <Nav.Item className="ml-1" as={NavLink} to="/"><h3 className="d-inline-block mb-0 text-uppercase"><Badge pill variant="success">{profile.initials}</Badge></h3></Nav.Item>
             </ListGroup.Item>            
         </ListGroup>
     )

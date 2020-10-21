@@ -5,12 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './store/reducers/rootReducer';
+import Loading from './components/layout/Loading';
 
 // react-redux is binding layer 
 // help us to bind redux with react app
 // surround our app and pass the store into the application
 // so that application has access to the store
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 
 // redux middleware
 // halt dispatch, inside action creator create asynchronous function
@@ -18,16 +19,12 @@ import thunk from 'redux-thunk';
 
 // redux firebase and firestore middleware
 import { createFirestoreInstance, reduxFirestore, getFirestore } from 'redux-firestore';
-import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
+import { ReactReduxFirebaseProvider, getFirebase, isLoaded } from 'react-redux-firebase';
 
-import firebase from './config/fbConfig';
-import 'firebase/firestore';
+import fbConfig from './config/fbConfig';
+import firebase from 'firebase/app';
 
-// firestore collection config
-const rrfConfig = { 
-  userProfile: 'projects',
-  useFirestoreForProfile: true
-}
+
 
 
 // Create Redux central store
@@ -40,24 +37,42 @@ const store = createStore(rootReducer,
     // first store enhancer
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
     // second store enhancer
-    reduxFirestore(firebase)
+    reduxFirestore(firebase, fbConfig)
   )
 );
+
+// firestore collection config
+const profileSpecificProps = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+  enableRedirectHandling: false,
+  resetBeforeLogin: false,
+  fbConfig: fbConfig
+}
+
 
 // ReactReduxFirebaseProvider HOC props
 const rffProps = {
   firebase,
-  useFirestoreForProfile: true,
-  config: rrfConfig,
+  config: profileSpecificProps,
   dispatch: store.dispatch,
-  createFirestoreInstance
+  createFirestoreInstance,
+  attachAuthIsReady: true
+}
+
+function AuthIsLoaded({ children }) {
+  const auth = useSelector( (state ) => state.firebase.auth);
+  if(!isLoaded(auth)) return <Loading />;
+    return children
 }
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rffProps}>
-        <App />
+        <AuthIsLoaded>
+          <App />
+        </AuthIsLoaded>
       </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,

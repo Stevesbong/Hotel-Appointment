@@ -1,11 +1,15 @@
 import React from 'react';
-import { Container, Card } from 'react-bootstrap';
+import { Container, Card, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { Redirect, Link } from 'react-router-dom';
 
-const ProjectDetails = ({ match, project }) => {
+const ProjectDetails = ({ match, project, auth }) => {
     
+    // if user is not sign in, they cannot access this component(page)
+    if(!auth.uid) return <Redirect to='/signin' />
+
     if( project ) {
         return (
             <Container className="project-details">
@@ -19,6 +23,7 @@ const ProjectDetails = ({ match, project }) => {
                     <p className="text-secondary lead">14th October, 11pm</p>
                 </Card.Footer>
                 </Card>
+                <Button variant="danger float-right mt-3" type="button" as={ Link } to="/">Go Home</Button>
             </Container>
         )
     } else {
@@ -42,7 +47,8 @@ const mapStateToProps = (state, ownProps) => {
     // get a single project with ID from params
     const project = projects ? projects[id] : null;
     return {
-        project: project
+        project: project,
+        auth: state.firebase.auth
     }
 }
 

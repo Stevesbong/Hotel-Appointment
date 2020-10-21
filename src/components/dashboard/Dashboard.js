@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Notifications from './Notifications';
 import ProjectList from '../project/ProjectList';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom';
 
 // connect component with single database collection
 import { firestoreConnect } from 'react-redux-firebase';
@@ -15,7 +16,10 @@ import { connect } from 'react-redux';
 class Dashboard extends Component {
     render() {
         console.log(this.props)
-        const { projects } = this.props;
+        const { projects, auth } = this.props;
+
+        // if user is not sign in, they cannot access this component(page)
+        if(!auth.uid) return <Redirect to='/signin' />
 
         return (
             <Container className="dashboard my-3z-index-2 pos-abs">
@@ -42,7 +46,8 @@ class Dashboard extends Component {
 const mapStateToProps = ( state ) => {
     console.log(state)
     return {
-        projects: state.firestore.ordered.projects
+        projects: state.firestore.ordered.projects,
+        auth: state.firebase.auth
     }
 }
 

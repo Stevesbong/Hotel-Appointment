@@ -4,6 +4,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 // Higher Order Component (HOC) that connecting redux store and react
 // Connect this Dashboard component with the redux store
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 // Action creator
 import { createProject } from '../../store/actions/projectActions';
@@ -30,15 +31,20 @@ class CreateProject extends Component {
         this.props.createProject(this.state)
     }
     render() {
+        const { auth } = this.props;
+
+        // if user is not sign in, they cannot access this component(page)
+        if(!auth.uid) return <Redirect to='/signin' />
+        
         return (
             <Container>
                 <Form onSubmit={this.handleSubmit}>
                     <h3 className="text-light mb-4">Create new project</h3>
-                    <Form.Group controlId="title">
+                    <Form.Group className="col-6" controlId="title">
                         <Form.Label className="text-light">Title</Form.Label>
                         <Form.Control onChange={this.handleChange} type="text" placeholder="Enter Title" />
                     </Form.Group>
-                    <Form.Group controlId="content">
+                    <Form.Group className="col-6" controlId="content">
                         <Form.Label className="text-light">Project Content</Form.Label>
                         <Form.Control as="textarea" rows="4" onChange={this.handleChange} placeholder="Enter Content" />
                     </Form.Group>
@@ -53,6 +59,12 @@ class CreateProject extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 /**
  * map our dispatch from the store to the props in this component
  * @param {*} dispatch dispatch of our redux store
@@ -64,4 +76,4 @@ const mapDispatchToProps = ( dispatch ) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateProject);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);
