@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect, Link } from 'react-router-dom';
+import moment from 'moment';
 
-const ProjectDetails = ({ match, project, auth }) => {
+const ProjectDetails = ({ project, auth }) => {
     
     // if user is not sign in, they cannot access this component(page)
     if(!auth.uid) return <Redirect to='/signin' />
@@ -20,7 +21,7 @@ const ProjectDetails = ({ match, project, auth }) => {
                     </Card.Body>
                     <Card.Footer className="blockquote-footer py-0 card-footer border-secondary">
                     <p className="d-inline-block my-1 lead font-weight-normal">Posted by <cite title="Source Title">{ project.authorFirstName } { project.authorLastName }</cite></p>
-                    <p className="text-secondary lead">14th October, 11pm</p>
+                    <p className="text-secondary lead">{project.createdAt && moment(project.createdAt.toDate()).calendar()}</p>
                 </Card.Footer>
                 </Card>
                 <Button variant="danger float-right mt-3" type="button" as={ Link } to="/">Go Home</Button>
