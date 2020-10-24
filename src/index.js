@@ -60,6 +60,7 @@ const rffProps = {
   attachAuthIsReady: true
 }
 
+// check if user log in before all the component load if not, display spinner component
 function AuthIsLoaded({ children }) {
   const auth = useSelector( (state ) => state.firebase.auth);
   if(!isLoaded(auth)) return <Loading />;
@@ -68,7 +69,9 @@ function AuthIsLoaded({ children }) {
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* Redux provider */}
     <Provider store={store}>
+      {/* Firebase provider */}
       <ReactReduxFirebaseProvider {...rffProps}>
         <AuthIsLoaded>
           <App />

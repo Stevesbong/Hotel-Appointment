@@ -1,4 +1,4 @@
-# [Home Appointment]
+# [Travel Planner]
 
 Website preview: not available at this moment.
 
@@ -9,4 +9,4 @@ Website preview: not available at this moment.
 
 ### Description
 
-working on hotel appointment app.
+working on Travel Planner app.
