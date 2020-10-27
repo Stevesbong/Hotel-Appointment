@@ -1,3 +1,4 @@
+// sign in user in the firebase auth
 export const signIn = (credentials) => {
     return (dispatch, getState, { getFirebase }) => {
         // to communicate with firebase authentication
@@ -14,6 +15,7 @@ export const signIn = (credentials) => {
     }
 }
 
+// sign out the user in the firebase auth
 export const signOut = () => {
     return (dispatch, getState, { getFirebase }) => {
         const firebase = getFirebase();
@@ -24,6 +26,7 @@ export const signOut = () => {
     }
 }
 
+// sign up user in the firebase auth
 export const signUp = (newUser) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firebase = getFirebase();

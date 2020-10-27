@@ -15,8 +15,7 @@ import { connect } from 'react-redux';
 
 class Dashboard extends Component {
     render() {
-        console.log(this.props)
-        const { projects, auth } = this.props;
+        const { projects, auth, notifications } = this.props;
 
         // if user is not sign in, they cannot access this component(page)
         if(!auth.uid) return <Redirect to='/signin' />
@@ -28,7 +27,7 @@ class Dashboard extends Component {
                         <ProjectList projects={projects} />
                     </Col>
                     <Col xs={12} md={{ span:5, offset: 1 }}>
-                        <Notifications />
+                        <Notifications notifications={notifications} />
                     </Col>
                 </Row>
             </Container>
@@ -44,10 +43,10 @@ class Dashboard extends Component {
  * so we can access them inside this component
  */
 const mapStateToProps = ( state ) => {
-    console.log(state)
     return {
         projects: state.firestore.ordered.projects,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        notifications: state.firestore.ordered.notifications
     }
 }
 
@@ -55,6 +54,7 @@ const mapStateToProps = ( state ) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {collection: 'projects'}
+        { collection: 'projects', orderBy: ['createdAt', 'desc'] },
+        { collection: 'notifications', limit: 5, orderBy: ['time', 'desc'] }
     ])
 )(Dashboard);

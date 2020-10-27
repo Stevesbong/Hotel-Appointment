@@ -14,7 +14,6 @@ class SignUp extends Component {
 
     // Handling input field
     handleChange = (e) => {
-        console.log(e.target.id)
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -23,7 +22,6 @@ class SignUp extends Component {
     // Handling form submit
     handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(this.state)
         this.props.signUp(this.state);
 
     }

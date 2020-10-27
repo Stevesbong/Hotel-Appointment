@@ -13,12 +13,12 @@ body {
   background: url('./assets/bg-home1.jpg') no-repeat;
   background-size: cover;
   background-position: center center;
-  background-color: darkorange;
   min-height: 100%;
 }
 
 .badge {
-  padding: .638em .58em
+  border-radius: 50%;
+  padding: 15px;
 }
 
 .logout {

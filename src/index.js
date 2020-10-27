@@ -27,11 +27,7 @@ import firebase from 'firebase/app';
 
 
 
-// Create Redux central store
-/**
- * @param { reducer } 
- * @param { middleware } middleware take list of store enhancers
- */
+// Create Redux central store with firebase authentication and firestore
 const store = createStore(rootReducer, 
   compose(
     // first store enhancer
@@ -49,7 +45,6 @@ const profileSpecificProps = {
   resetBeforeLogin: false,
   fbConfig: fbConfig
 }
-
 
 // ReactReduxFirebaseProvider HOC props
 const rffProps = {
@@ -69,15 +64,21 @@ function AuthIsLoaded({ children }) {
 
 ReactDOM.render(
   <React.StrictMode>
+
     {/* Redux provider */}
     <Provider store={store}>
+
       {/* Firebase provider */}
       <ReactReduxFirebaseProvider {...rffProps}>
         <AuthIsLoaded>
           <App />
         </AuthIsLoaded>
       </ReactReduxFirebaseProvider>
+      {/* Firebase provider end */}
+
     </Provider>
+    {/* Redux provider end */}
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

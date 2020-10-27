@@ -14,7 +14,7 @@ const SignedInLinks = ({ signOut, profile }) => {
                 <Nav.Item className="ml-1 text-light text-decoration-none logout" as="a" onClick={signOut}>Log Out</Nav.Item>
             </ListGroup.Item>
             <ListGroup.Item className="my-auto px-2 py-1 bg-dark border-0" as="li">
-                <Nav.Item className="ml-1" as={NavLink} to="/"><h3 className="d-inline-block mb-0 text-uppercase"><Badge pill variant="success">{profile.initials}</Badge></h3></Nav.Item>
+                <Nav.Item className="ml-1" as={NavLink} to="/"><h3 className="d-inline-block mb-0 text-uppercase"><Badge variant="success">{profile.initials}</Badge></h3></Nav.Item>
             </ListGroup.Item>            
         </ListGroup>
     )

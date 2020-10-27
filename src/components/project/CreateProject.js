@@ -27,7 +27,6 @@ class CreateProject extends Component {
     // Handling form submit
     handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(this.state)
         this.props.createProject(this.state);
         this.props.history.push('/');
     }
@@ -40,19 +39,15 @@ class CreateProject extends Component {
         return (
             <Container>
                 <Form onSubmit={this.handleSubmit}>
-                    <h3 className="text-light mb-4">Create new project</h3>
+                    <h3 className="text-light mb-4">Create new plan</h3>
                     <Form.Group className="col-6" controlId="title">
                         <Form.Label className="text-light">Title</Form.Label>
                         <Form.Control onChange={this.handleChange} type="text" placeholder="Enter Title" />
                     </Form.Group>
                     <Form.Group className="col-6" controlId="content">
-                        <Form.Label className="text-light">Project Content</Form.Label>
+                        <Form.Label className="text-light">Plan Content</Form.Label>
                         <Form.Control as="textarea" rows="4" onChange={this.handleChange} placeholder="Enter Content" />
                     </Form.Group>
-                    {/* <Form.Group controlId="textarea">
-                        <Form.Label>Example textarea</Form.Label>
-                        <Form.Control as="textarea" rows="3" />
-                    </Form.Group> */}
                     <Button variant="primary" type="submit">Create</Button>
                 </Form>
             </Container>
