@@ -20,9 +20,9 @@ const ProjectDetails = ({ project, auth }) => {
                         <p className="blockquote pl-3">{ project.content }</p>
                     </Card.Body>
                     <Card.Footer className="blockquote-footer py-0 card-footer border-secondary">
-                    <p className="d-inline-block my-1 lead font-weight-normal">Posted by <cite title="Source Title">{ project.authorFirstName } { project.authorLastName }</cite></p>
-                    <p className="text-secondary lead">{project.createdAt && moment(project.createdAt.toDate()).calendar()}</p>
-                </Card.Footer>
+                        <p className="d-inline-block my-1 lead font-weight-normal">Posted by <cite title="Source Title">{ project.authorFirstName } { project.authorLastName }</cite></p>
+                        <p className="text-secondary lead">{project.createdAt && moment(project.createdAt.toDate()).calendar()}</p>
+                    </Card.Footer>
                 </Card>
                 <Button variant="danger float-right mt-3" type="button" as={ Link } to="/">Go Home</Button>
             </Container>
