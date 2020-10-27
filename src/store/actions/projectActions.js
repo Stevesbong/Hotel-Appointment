@@ -40,3 +40,25 @@ export const deleteProject = (id) => {
             })
     }
 }
+
+export const editProject = (project, id) => {
+    // used thunk to return a function
+    
+    return ( dispatch, getState, { getFirebase, getFirestore }) => {
+        // make async call to database
+
+        console.log(id, 'project id action')
+        console.log(project, 'project action')
+        const firestore = getFirestore();
+        firestore.collection('projects').doc(id).set({
+            ...project,
+            updatedAt: new Date()
+        })
+        .then( () => {
+            dispatch({ type: 'UPDATE_PROJECT', project })
+        })
+        .catch( err => {
+            dispatch({ type: 'UPDATE_PROJECT_ERROR', err })
+        })
+    }
+}

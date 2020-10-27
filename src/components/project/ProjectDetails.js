@@ -8,11 +8,11 @@ import { Redirect, Link } from 'react-router-dom';
 import moment from 'moment';
 
 const ProjectDetails = ({ match, project, deleteProject, auth }) => {
-    console.log(match.params.id, 'compo')
     const projectId = match.params.id
     // if user is not sign in, they cannot access this component(page)
     if(!auth.uid) return <Redirect to='/signin' />
-
+    // const author = project.authorId;
+    // const edit = auth.uid === author ? <Button variant="success float-right mt-3 mx-1" type="button" as={ Link } to={'/project/edit/' + projectId}>Edit</Button> : null;
     if( project ) {
         return (
             <Container className="project-details">
@@ -27,6 +27,7 @@ const ProjectDetails = ({ match, project, deleteProject, auth }) => {
                     </Card.Footer>
                 </Card>
                 <Button variant="danger float-right mt-3 mx-1" type="button" as={ Link } to="/" onClick={ () => deleteProject(projectId)}>Delete</Button>
+                <Button variant="success float-right mt-3 mx-1" type="button" as={ Link } to={'/project/edit/' + projectId}>Edit</Button>
                 <Button variant="info float-right mt-3 mx-1" type="button" as={ Link } to="/">Go Home</Button>
             </Container>
         )
