@@ -1,18 +1,25 @@
-# [Travel Planner]
+# [Travel Planner](https://project-planer-42ca1.web.app/)
 
-Website preview: not available at this moment.
+Website preview:
 
 
 
-<!-- <img src="https://github.com/Stevesbong/Stevesbong.github.io/blob/master/img/portfolioscreenshot.png" width="600" height="700"> -->
+<img src="https://github.com/Stevesbong/Stevesbong.github.io/blob/master/img/travel-planer3.png" width="600" height="700">
 
 
 ### Description
 
-working on Travel Planner app.
+React Full-Stack project app for travel planner.
+User can view all the plans, create, edit, and delete.
+
+__*Skills Used*__: CSS, JavaScript, JSX, React, Redux, Firebase, Firestore, and CloudFunction.
 
 
 
-<!-- If you want to move have things inside build on webapp and not webapp/build, the commands for Windows are "build": "react-scripts build && RMDIR /S /Q webapp && move build webapp" – -->
+#### To Do List
+- [ ] Add notification when user update project
+- [ ] Add skeleton screen when app is loading
+
+
 
 <!-- txt record google-site-verification=HgexPbpMFqbKBROaCm0ENgAeDDajXIPMtCryysWIFuI -->

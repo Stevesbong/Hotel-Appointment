@@ -10,7 +10,6 @@ export const createProject = (project) => {
         const profile = getState().firebase.profile;
         const authorId = getState().firebase.auth.uid;
 
-
         firestore.collection('projects').add({
             ...project,
             authorFirstName: profile.firstName,
@@ -47,8 +46,6 @@ export const editProject = (project, id) => {
     return ( dispatch, getState, { getFirebase, getFirestore }) => {
         // make async call to database
 
-        console.log(id, 'project id action')
-        console.log(project, 'project action')
         const firestore = getFirestore();
         firestore.collection('projects').doc(id).set({
             ...project,
