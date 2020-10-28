@@ -6,7 +6,7 @@
 .pnp.js
 
 # API KEYS
-src/config
+fbConfig.js
 
 # testing
 /coverage
