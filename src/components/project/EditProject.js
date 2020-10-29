@@ -34,15 +34,11 @@ class EditProject extends Component {
     // Handling form submit
     handleSubmit = (e) => {
         e.preventDefault();
-        
         this.props.editProject(this.state, this.props.match.params.id);
-        console.log(this.state, 'submit')
         this.props.history.push('/');
     }
     render() {
         const { project, auth } = this.props;
-        console.log(auth, 'auth')
-        console.log(project, 'project')
 
         // if user is not sign in, they cannot access this component(page)
         if(!auth.uid) return <Redirect to='/signin' />
