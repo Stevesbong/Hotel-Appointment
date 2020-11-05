@@ -11,9 +11,15 @@ const ProjectDetails = ({ match, project, deleteProject, auth }) => {
     const projectId = match.params.id
     // if user is not sign in, they cannot access this component(page)
     if(!auth.uid) return <Redirect to='/signin' />
-    // const author = project.authorId;
-    // const edit = auth.uid === author ? <Button variant="success float-right mt-3 mx-1" type="button" as={ Link } to={'/project/edit/' + projectId}>Edit</Button> : null;
     if( project ) {
+        const author = project.authorId;
+        const loginUser = auth.uid;
+        const edit = author === loginUser ? (
+            <React.Fragment>
+                <Button variant="danger float-right mt-3 mx-1" type="button" as={ Link } to="/" onClick={ () => deleteProject(projectId)}>Delete</Button>
+                <Button variant="success float-right mt-3 mx-1" type="button" as={ Link } to={'/project/edit/' + projectId}>Edit</Button>
+            </React.Fragment>
+        ) : null;
         return (
             <Container className="project-details">
                 <Card className="border-0">
@@ -26,8 +32,7 @@ const ProjectDetails = ({ match, project, deleteProject, auth }) => {
                         <p className="text-secondary lead">{project.createdAt && moment(project.createdAt.toDate()).calendar()}</p>
                     </Card.Footer>
                 </Card>
-                <Button variant="danger float-right mt-3 mx-1" type="button" as={ Link } to="/" onClick={ () => deleteProject(projectId)}>Delete</Button>
-                <Button variant="success float-right mt-3 mx-1" type="button" as={ Link } to={'/project/edit/' + projectId}>Edit</Button>
+                { edit }
                 <Button variant="info float-right mt-3 mx-1" type="button" as={ Link } to="/">Go Home</Button>
             </Container>
         )

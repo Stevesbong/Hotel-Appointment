@@ -13,7 +13,7 @@ const NavbarContainer = ({ auth, profile }) => {
     return (
         <Navbar className="py-0 mb-3 mb-md-5" sticky="top" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand as={Link} to="/">Travel Planer</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Travel Planner</Navbar.Brand>
                 { links }
             </Container>
         </Navbar>
