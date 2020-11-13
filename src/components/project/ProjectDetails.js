@@ -14,7 +14,7 @@ const ProjectDetails = ({ match, project, deleteProject, auth }) => {
     if( project ) {
         const author = project.authorId;
         const loginUser = auth.uid;
-        const edit = author === loginUser ? (
+        const editButton = author === loginUser ? (
             <React.Fragment>
                 <Button variant="danger float-right mt-3 mx-1" type="button" as={ Link } to="/" onClick={ () => deleteProject(projectId)}>Delete</Button>
                 <Button variant="success float-right mt-3 mx-1" type="button" as={ Link } to={'/project/edit/' + projectId}>Edit</Button>
@@ -32,7 +32,7 @@ const ProjectDetails = ({ match, project, deleteProject, auth }) => {
                         <p className="text-secondary lead">{project.createdAt && moment(project.createdAt.toDate()).calendar()}</p>
                     </Card.Footer>
                 </Card>
-                { edit }
+                { editButton }
                 <Button variant="info float-right mt-3 mx-1" type="button" as={ Link } to="/">Go Home</Button>
             </Container>
         )
@@ -41,7 +41,7 @@ const ProjectDetails = ({ match, project, deleteProject, auth }) => {
             <Container>
                 <Card>
                     <Card.Body>
-                        <p className="text-center">Loading project . . .</p>
+                        <p className="text-center">Loading Plans . . .</p>
                     </Card.Body>
                 </Card>
             </Container>
